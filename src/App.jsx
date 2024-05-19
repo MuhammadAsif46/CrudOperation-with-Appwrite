@@ -11,11 +11,6 @@ function App() {
       <PostForm />
       <div className="flex flex-wrap justify-between gap-5">
         <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
       </div>
     </>
   );

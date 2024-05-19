@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import profileImg from "../../assets/user.svg";
+import {v4 as uuidv4} from "uuid"
+import {databases} from "../../appwrite/appwriteConfig"
 
 const PostForm = () => {
+  const [post, setPost] = useState();
+
+  const formSubmitHandle = (e) => {
+    e.preventDefault();
+
+    const promise = databases.createDocument("6648c89f00135cfcab19","6648c8b6001e2ac3de30", uuidv4(), {
+      post,
+    });
+    console.log(promise);
+    promise.then(
+      function (response) {
+        console.log(response);
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+
+    e.target.reset();
+    
+  };
   return (
     <div className="flex justify-center items-center py-3">
-      <div className="bg-white rounded-xl shadow-lg w-1/2 p-2">
+      <form
+        action=""
+        onSubmit={formSubmitHandle}
+        className="bg-white rounded-xl shadow-lg w-1/2 p-2"
+      >
         <div className="flex p-2 items-center gap-3">
           <div
             className="rounded-full flex justify-center items-center"
@@ -20,17 +47,23 @@ const PostForm = () => {
           </div>
         </div>
         <div className="p-2">
-          <textarea rows={5} className="border w-full"></textarea>
+          <textarea
+            rows={5}
+            className="border px-2 w-full"
+            placeholder="Enter your post"
+            onChange={(e) => setPost(e.target.value)}
+            required
+          ></textarea>
         </div>
         <div className="p-2">
           <button
-            type="button"
+            type="submit"
             className="focus:outline-none w-full text-white bg-purple-500 hover:bg-purple-700 focus:ring-1 focus:ring-purple-300 font-medium rounded-lg px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
           >
             Post
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
