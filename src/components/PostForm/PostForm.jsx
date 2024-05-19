@@ -23,7 +23,12 @@ const PostForm = () => {
           <textarea rows={5} className="border w-full"></textarea>
         </div>
         <div className="p-2">
-        <button type="button" className="focus:outline-none w-full text-white bg-purple-500 hover:bg-purple-700 focus:ring-1 focus:ring-purple-300 font-medium rounded-lg px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Post</button>
+          <button
+            type="button"
+            className="focus:outline-none w-full text-white bg-purple-500 hover:bg-purple-700 focus:ring-1 focus:ring-purple-300 font-medium rounded-lg px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+          >
+            Post
+          </button>
         </div>
       </div>
     </div>
